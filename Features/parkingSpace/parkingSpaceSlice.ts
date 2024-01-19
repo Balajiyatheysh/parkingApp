@@ -6,8 +6,8 @@ export const fetchPayment = async(carParkingDetails:any) =>{
         const res = await axios.post(`https://httpstat.us/200/${carParkingDetails}`)
         alert('Payment Successfull')
     }
-    catch (err){
-        console.warn(err)
+    catch (error){
+        console.warn(error)
     }
 }
 type InitialStateTypes = {
