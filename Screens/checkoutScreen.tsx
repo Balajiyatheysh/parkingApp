@@ -21,7 +21,7 @@ const Checkout = () => {
 
     const timeSpent = calcTimeSpent(startTime.hours, endTime.hours, startTime.minutes, endTime.minutes)
 
-    const calcAmount = (totalTime: number) => {
+    const calculateAmount = (totalTime: number) => {
         if (totalTime < 2)
             return 10
         else {
@@ -30,7 +30,7 @@ const Checkout = () => {
         }
     }
 
-    let totalAmount = calcAmount(timeSpent.hours)
+    let totalAmount = calculateAmount(timeSpent.hours)
 
     return (
         <View style={styles.carinoutInfo}>
