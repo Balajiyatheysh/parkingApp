@@ -10,11 +10,6 @@ export const fetchPayment = async(carParkingDetails:any) =>{
         console.warn(error)
     }
 }
-type InitialStateTypes = {
-    noOfParkingSpace:number;
-    parkingSpaces:parkingSpaceTypes[];
-    parkingSpotDetails:parkingSpaceTypes;
-}
 
 export type parkingSpaceTypes = {
     id:number;
@@ -22,6 +17,12 @@ export type parkingSpaceTypes = {
     carReg:string;
     startTime:{hours:number; minutes:number};
     endTime:{hours:number; minutes:number};
+}
+
+type InitialStateTypes = {
+    noOfParkingSpace:number;
+    parkingSpaces:parkingSpaceTypes[];
+    parkingSpotDetails:parkingSpaceTypes;
 }
 
 
