@@ -7,10 +7,15 @@ import { useAppDispatch} from '../Hooks/hooks'
 import { addParkingSpace } from '../Features/parkingSpace/parkingSpaceSlice'
 
 const Home = () => {
-  const [parkingSpace, setParkingSpace] = React.useState<Number | any>()
-  const navigator = useNavigation<NativeStackNavigationProp<ScreenParamTypes,'Home'>>()
-  const dispatch = useAppDispatch()
+
+  const [parkingSpace, setParkingSpace] = React.useState<Number | any>();
+
+  const navigator = useNavigation<NativeStackNavigationProp<ScreenParamTypes,'Home'>>();
+
+  const dispatch = useAppDispatch();
+
   return (
+
     <View style={styles.container}>
       <Text style={styles.text}>Parking Management</Text>
       <TextInput style={styles.input} placeholder='Enter number of parking spaces'
@@ -28,7 +33,7 @@ const Home = () => {
         />
     </View>
   )
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -47,6 +52,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     fontSize: 18,
   }
-})
+});
 
-export default Home
+export default Home;

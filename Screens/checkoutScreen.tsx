@@ -7,30 +7,39 @@ import { ScreenParamTypes } from '../App'
 import { deAllocateParking } from '../Features/parkingSpace/parkingSpaceSlice'
 
 const Checkout = () => {
-    const { parkingSpotDetails } = useAppSelector((state) => state.ParkingSpace)
-    const { startTime, endTime, carReg } = parkingSpotDetails
-    const navigator = useNavigation<NativeStackNavigationProp<ScreenParamTypes, 'Checkout'>>()
-    const dispatch = useAppDispatch()
+
+    const { parkingSpotDetails } = useAppSelector((state) => state.ParkingSpace);
+
+    const { startTime, endTime, carReg } = parkingSpotDetails;
+
+    const navigator = useNavigation<NativeStackNavigationProp<ScreenParamTypes, 'Checkout'>>();
+
+    const dispatch = useAppDispatch();
 
     const calcTimeSpent = (hour1: number, hour2: number, minute1: number, minute2: number) => {
+
         let t1 = hour1 * 60 + minute1;
         let t2 = hour2 * 60 + minute2;
         let totalTime = t2 - t1 > 0 ? t2 - t1 : t1 - t2;
+
         return { hours: Math.floor(totalTime / 60), minutes: totalTime % 60 };
+
     }
 
-    const timeSpent = calcTimeSpent(startTime.hours, endTime.hours, startTime.minutes, endTime.minutes)
+    const timeSpent = calcTimeSpent(startTime.hours, endTime.hours, startTime.minutes, endTime.minutes);
 
     const calculateAmount = (totalTime: number) => {
+
         if (totalTime < 2)
             return 10
         else {
             let extraTime = totalTime - 2
             return 10 + extraTime * 10
-        }
-    }
+        };
 
-    let totalAmount = calculateAmount(timeSpent.hours)
+    };
+
+    let totalAmount = calculateAmount(timeSpent.hours);
 
     return (
         <View style={styles.carinoutInfo}>
@@ -42,8 +51,8 @@ const Checkout = () => {
                 <Button
                     title='Payment Taken'
                     onPress={() => {
-                        dispatch(deAllocateParking(totalAmount))
-                        navigator.navigate('Parking')
+                        dispatch(deAllocateParking(totalAmount));
+                        navigator.navigate('Parking');
                     }}
                 />
         </View>
@@ -59,6 +68,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-around'
     },
+
     carRegister: {
         borderWidth: 1.2,
         borderColor: 'black',
@@ -69,6 +79,7 @@ const styles = StyleSheet.create({
         height: 200,
         padding: 8,
     },
+
 })
 
-export default Checkout
+export default Checkout;
